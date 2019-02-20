@@ -35,7 +35,7 @@ body{
                 <button type="submit" class="signin_bu" name="submit">Login</button>
                 <br>
 New user?
-                <a href="http://csdm-webdev.rgu.ac.uk/1811216/project.io/register.html" class="">Create account here</a>
+                <a href="http://csdm-webdev.rgu.ac.uk/1811216/1811216_2.github.io/Register.php" class="">Create account here</a>
             </div>
         </form>
     </main>

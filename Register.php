@@ -37,7 +37,7 @@
             <button type="submit" name="submit">Register</button>
             <br>
             <br>
-            <a href="http://csdm-webdev.rgu.ac.uk/1811216/project.io/">Return to Previous Page</a>
+            <a href="http://csdm-webdev.rgu.ac.uk/1811216/1811216_2.github.io/">Return to Previous Page</a>
             <span class="PSTEXT">* Required Information</span>
         </div>
     </form>
