@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="assets/CSS/style.css">
+    <link rel="stylesheet" href="assets/CSS/unsemantic-grid-responsive-tablet.css">
+
+    <style>
+        body{
+            background-image: url("assets/images/index_background.jpg");
+            background-repeat: no-repeat;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <h1>DAWN</h1>
+    <h2>Registration Page</h2>
+</header>
+<main>
+    <form class="signup-form" action="includes/signup.inc.php" method="POST">
+        <div class="si_inside">
+            <p>*Given Name:</p>
+            <input type="text" name="first" style="width:236px;">
+            <p>*Family Name:</p>
+            <input type="text" name="last" style="width:236px; ">
+            <p>*User ID:</p>
+            <input type="text" name="uid" style="width:236px; ">
+            <p>*Password:</p>
+            <input type="password" name="pwd" style="width:236px; ">
+            <p>*Email:</p>
+            <input type="text" name="email" style="width:236px;">
+            <br>
+            <br>
+            <button type="submit" name="submit">Register</button>
+            <br>
+            <br>
+            <a href="http://csdm-webdev.rgu.ac.uk/1811216/project.io/">Return to Previous Page</a>
+            <span class="PSTEXT">* Required Information</span>
+        </div>
+    </form>
+</main>
+</body>
+</html>
