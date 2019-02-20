@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
                     $_SESSION['u_pwd'] = $row['pass'];
                     $_SESSION['u_email'] = $row['email'];
 
-                    header("Location: ../index.html?login=success");
+                    header("Location: ../CommonArea.php?signup=success");
                     exit();
                 }
             }

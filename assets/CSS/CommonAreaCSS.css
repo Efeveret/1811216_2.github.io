@@ -1,0 +1,132 @@
+@import"templatecolours.css";
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+
+
+header{
+    height: 100px;
+    margin: 10px;
+    justify-content: space-between;
+}
+
+#cont1{
+    order: 1;
+    background-color: white;
+    position: center;
+}
+#cont2{
+    order: 2;
+    position: center;
+
+
+}
+
+li a:hover {
+    background-color: #6DD4FE;
+}
+
+ul {
+    border: 1px solid #555;
+}
+
+li {
+    text-align: center;
+    border-bottom: 1px solid #555;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+body{
+    background-color: lightgreen;
+    max-width: 960px;
+    margin-left: auto;
+
+}
+
+#Forum{
+    background-color: orange;
+    padding-top: 100px;
+    padding-right: 2.5%;
+    padding-left: 2.5%;
+    width: 40%;
+    float: right;
+}
+
+
+
+#Calender{
+    background-color: orange;
+    padding-top: 100px;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    width: 40%;
+    float: left;
+    display: block;
+
+}
+
+#CurrentSprintInfo{
+    background-color: green;
+    padding-top: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+    clear: both;
+}
+
+
+#Team{
+    background-color: blue;
+    padding-top: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#Useful_links{ background-color: red;
+    width: 40%;
+    float: left;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 60px;
+
+}
+
+#Support{ background-color: red;
+    width: 40%;
+    float: right;
+    padding-right: 30px ;
+    padding-left: 30px;
+    height: 60px;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    height: 20px;
+    width: 100%;
+    background-color: purple;
+    text-align: center;
+    clear: both;
+}
