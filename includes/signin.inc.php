@@ -4,12 +4,12 @@ session_start();
 if (isset($_POST['submit'])) {
 
     include 'dbh.inc.php';//connection file
-
+    $_SESSION['Warning'] = FALSE;
     $uid = mysqli_real_escape_string($conn, $_POST['userid']);
     $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
 
     if(empty($uid)||empty($pwd)){
-        header("Location: ../index.html?login=empty");
+        header("Location: ../index.php?login=empty");
         exit();
     }else{
         $sql = "SELECT * FROM users WHERE username='$uid' OR email='$uid'  ";
@@ -17,8 +17,11 @@ if (isset($_POST['submit'])) {
         $resultCheck = mysqli_num_rows($result);
 
         if ($resultCheck < 1){
-            header("Location: ../index.html?login=nouser");
+            $_SESSION['Warning'] = TRUE;
+            header("Location: ../index.php?login=error");
             exit();
+
+
         }else{
             if($row = mysqli_fetch_assoc($result)){
                 //De-hashing password
@@ -26,17 +29,20 @@ if (isset($_POST['submit'])) {
                 $hashedPWDCheck = password_verify($pwd,$row['pass']);
 
                 if ($hashedPWDCheck == false){
-                    header("Location: ../index.html?login=wrongpass");
+                    $_SESSION['Warning'] = TRUE;
+                    header("Location: ../index.php?login=error ");
                     exit();
+
                 }elseif ($hashedPWDCheck == true){
                     $_SESSION['u_id'] = $row['id'];
                     $_SESSION['u_first'] = $row['first_name'];
-                    $_SESSION['u_id'] = $row['last_name'];
+                    $_SESSION['u_last'] = $row['last_name'];
                     $_SESSION['u_username'] = $row['username'];
                     $_SESSION['u_pwd'] = $row['pass'];
                     $_SESSION['u_email'] = $row['email'];
 
-                    header("Location: ../CommonArea.php?signup=success");
+                    header("Location: ../Profilepg.php?signin=success");
+                    //header("Location: ../ProjectArea.php?signup=success");
                     exit();
                 }
             }
@@ -44,5 +50,5 @@ if (isset($_POST['submit'])) {
         }
 
 }else{
-    header("Location: ../index.html?login=error1");
+    header("Location: ../index.php?login=error1");
     exit();}

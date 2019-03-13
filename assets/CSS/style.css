@@ -101,27 +101,69 @@ input, select {
     vertical-align:middle;
 }
 
-/*my code*/
-body{
-    max-width: 960px;
+/*
+////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////my code///////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+*/
+
+header{
+    background-color: black;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+footer{
+    background-color: #353535;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+h1{
+
+
+    padding: 1% 4% 1% 4%;
+    /*padding top, right, bottom, left */
+    width: 80%;
+
     margin-left: auto;
     margin-right: auto;
+    border: 3px solid black;
+    border-radius: 10px;
+    font-size: 200px;
+    margin-top: 20px;
+    text-align: center;
+}
 
-    background-image: url("/../../assets/images/index_background.jpg");
-    background-repeat: no-repeat;
+main{
+
+    border-radius: 10px;
+    margin-top: 71px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    right: 0;
+    left: 0;
+    /*position: fixed;*/
 }
 
 .signup-form{
-    background-color: #cccccc;
-    width: 350px;
-    height: 350px;
+ /*   background-color: #cccccc;*/
+    background: rgba(197, 197, 197, 0.9);
+    /*background: rgba(98, 185, 255, 0.35);*/
+    max-width: 350px;
+    max-height: 350px;
     margin-left: 20px;
-    margin-top: 100px;
+    margin-top: 55px;
     float:left;
 }
 .si_inside{
     /* Top,Bottom,right,left*/
-    margin: 10px 0px 2px 25px;
+    margin: 10px 25px 30px 25px;
 }
 .si_inside p{
     margin-bottom: 10px;
@@ -132,29 +174,145 @@ body{
 }
 
 .signin-form{
-    background-color: #cccccc;
+    background: rgba(197, 197, 197, 0.9);
+    width: 300px;
+    height: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+    padding: 10px 0px 0px 20px;
+    /*padding top, right, bottom, left*/
+}
+
+#form_inside{
+    /*background: rgba(197, 197, 197, 0.9);
     width: 300px;
     height: 200px;
-    margin-left: 34.5%;
-    margin-top: 10%;
-    float:left;
-    boader: auto;
-}
-#form_inside{
-    /* Top,Bottom,right,left*/
+    padding: 10px 0px 0px 4%;
+    padding top, right, bottom, left
+    Top,Bottom,right,left
     margin: 10px 0px 2px 25px;
+    margin-right: auto;
+    margin-left: auto;*/
+
 }
 
-h1{
-    font-family: Times New Roman;
-    text-align: center;
-    font-size: 200px;
-    margin-top: 20px;
-}
+
 
 h2{
-    font-family: Times New Roman;
     text-align: center;
     font-size: 50px;
+    margin-top: 10px;
 
+}
+
+.HiddenLIMF{
+    width: 320px;
+    background-color: tomato;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+}
+
+.HiddenLIMF p{
+    color: white;
+    text-align: center;
+
+
+
+
+
+}
+
+.HiddenMs{
+
+}
+
+.HiddenMs p{
+    text-align: center;
+    background-color: tomato;
+    color: white;
+    height: 30px;
+    max-width: 350px;
+    margin-left: 20px;
+    padding-top: 5px;
+    margin-top: 410px;
+}
+
+ .ScrumFeatures {
+    text-align: center;
+     font-size: 30px;
+
+}
+
+.ScrumFeatures button{
+    background-color: rgba(255, 255, 0, 0.4);
+    color: darkviolet;
+    font-size: 30px;
+    border: 3px solid #757575;
+    width: 700px;
+    margin-top: 20px;
+    border-radius: 15px 15px 0px 0px;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.ScrumFeatures button:hover{
+    background-color: #757575;
+    color: darkviolet;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+th, td {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+th{
+    background-color: black;
+    color: white;
 }
