@@ -13,6 +13,7 @@ if(!isset($_SESSION['u_username'])){
     <title>Sprint Review Meeting</title>
     <link rel="stylesheet" href="assets/CSS/unsemantic-grid-responsive-tablet.css"/>
     <link rel="stylesheet" href="assets/CSS/style.css"/>
+
     <style>
         body {
             background-image: url("assets/images/alex-jodoin-246078-unsplash.jpg");
@@ -31,7 +32,6 @@ if(!isset($_SESSION['u_username'])){
 <header>
     <p style='float: left; margin-top: 10px ; font-weight: bold;font-size: 34px; color: white;border: 1px solid white; border-radius: 10px; margin-left: 5px; width: 102px; padding: 3px 15px 3px 15px'>DAWN</p>
     <?php
-    session_start();
     $user01 = "";
     $user01 = $_SESSION['u_username'];
     echo "<p style='margin-top: 10px; color: white; text-align: right; margin-right: 10px'> Welcome $user01</p>";

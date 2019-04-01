@@ -30,6 +30,14 @@ if (isset($_POST['submit'])) {
                 $sql01 = "INSERT INTO `user_project_table`(`user_id`, `project_id`) VALUES ('$uid','$resultID')";
                 $result01 = mysqli_query($conn,$sql01);
 
+                $sql02 = "INSERT INTO `sprint_table`(`sprint_num`, `proj_id`) VALUES ('1','$resultID')";
+                $result02 = mysqli_query($conn,$sql02);
+                $resultID02 = mysqli_insert_id($conn);
+
+
+
+
+
 
 
                 if (empty($result01)){
@@ -38,6 +46,8 @@ if (isset($_POST['submit'])) {
                 }else{
                     $_SESSION['ProjName'] = $Pname;
                     $_SESSION['ProjID'] = $resultID;
+                    $_SESSION['Sprint_id'] = $resultID02;
+                    $_SESSION['Sprint_num'] = 1;
 
                     header("Location: ../ProjectArea.php");
                     exit();

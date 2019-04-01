@@ -31,7 +31,6 @@ if(!isset($_SESSION['u_username'])){
 <header>
     <p style='float: left; margin-top: 10px ; font-weight: bold;font-size: 34px; color: white;border: 1px solid white; border-radius: 10px; margin-left: 5px; width: 102px; padding: 3px 15px 3px 15px'>DAWN</p>
     <?php
-    session_start();
     $user01 = "";
     $user01 = $_SESSION['u_username'];
     echo "<p style='margin-top: 10px; color: white; text-align: right; margin-right: 10px'> Welcome $user01</p>";
@@ -49,7 +48,7 @@ if(!isset($_SESSION['u_username'])){
         <h2>Sprint Retrospective Meeting</h2>
     </div>
 
-    <form>
+    <form action="includes/loadSRM.php" method="POST">
         <p>Meeting Date [dd/mm/yyyy]:</p>
         <input type="text" name="first" style="width:236px;" required>
         <p>Start Time:</p>
@@ -57,7 +56,7 @@ if(!isset($_SESSION['u_username'])){
         <p>End Time:</p>
         <input type="text" name="first" style="width:236px;" required>
         <p>Reflection:</p>
-        <input type="text" name="first" style="width:236px;" required>
+        <textarea rows="4" cols="50"></textarea>
         <br>
         <br>
         <button type="submit" name="submit">Save</button>

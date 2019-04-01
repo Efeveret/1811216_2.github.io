@@ -40,6 +40,7 @@ if (isset($_POST['submit'])) {
                     $_SESSION['u_username'] = $row['username'];
                     $_SESSION['u_pwd'] = $row['pass'];
                     $_SESSION['u_email'] = $row['email'];
+                    $_SESSION['u_pic'] = $row['proPic'];
 
                     header("Location: ../Profilepg.php?signin=success");
                     //header("Location: ../ProjectArea.php?signup=success");

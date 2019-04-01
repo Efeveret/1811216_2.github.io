@@ -30,7 +30,6 @@ if(!isset($_SESSION['u_username'])){
         <header>
             <p style='float: left; margin-top: 10px ; font-weight: bold;font-size: 34px; color: white;border: 1px solid white; border-radius: 10px; margin-left: 5px; width: 102px; padding: 3px 15px 3px 15px'>DAWN</p>
             <?php
-            session_start();
             $user01 = "";
             $user01 = $_SESSION['u_username'];
             echo "<p style='margin-top: 10px; color: white; text-align: right; margin-right: 10px'> Welcome $user01</p>";
@@ -49,13 +48,34 @@ if(!isset($_SESSION['u_username'])){
                 <br>
                 <h2> Project Overview</h2>
                 <?php
-                session_start();
                 $ProjName = "";
+                $SprintNum = 1;
                 $ProjName = $_SESSION['ProjName'];
-                echo "<h2>Project: $ProjName [Sprint 1]</h2>";
+                $SprintNum = $_SESSION['Sprint_num'];
+                echo "<h2>Project: $ProjName [Sprint $SprintNum]</h2>";
                 ?>
             </section>
+            <section>
+                <form action="includes/loadSprint.php" method="POST">
+                <?php
 
+                include_once 'includes/dbh.inc.php';
+
+                $proid = mysqli_real_escape_string($conn,$_SESSION['ProjID']);
+                $sprid = mysqli_real_escape_string($conn,$_SESSION['Sprint_id']);
+
+                $sql = "SELECT * FROM `sprint_table` WHERE `proj_id`= '$proid'";
+                $result = mysqli_query($conn,$sql);
+
+                for ($i = 0 ; $i < mysqli_num_rows($result);  $i++){
+                    while ($row = mysqli_fetch_assoc($result)){
+                        //$abc = $row["Project_ID"];
+                        echo "<button type='submit' name='submit' value='".$row["sprint_num"]."'>".$row["sprint_num"]."</button>";
+                    }
+                }
+                ?>
+                </form>
+            </section>
                 <br><br>
 
             <!-- Button to open the modal login form -->
@@ -87,20 +107,19 @@ if(!isset($_SESSION['u_username'])){
             </div>
             <form class="load_partners">
                 <?php
-                session_start();
-                include_once 'includes/dbh.inc.php';
+
 
                 $Pid = mysqli_real_escape_string($conn,$_SESSION['ProjID']);
 
 
-                $sql = "SELECT * FROM `user_project_table`,`users` WHERE user_project_table.user_id = users.id AND `project_id`= '$Pid'";
-                $result = mysqli_query($conn,$sql);
+                $sql01 = "SELECT * FROM `user_project_table`,`users` WHERE user_project_table.user_id = users.id AND `project_id`= '$Pid'";
+                $result01 = mysqli_query($conn,$sql01);
 
 
 
 
-                for ($i = 0; $i < mysqli_num_rows($result);  $i++){
-                    while ($row = mysqli_fetch_assoc($result)){
+                for ($i = 0; $i < mysqli_num_rows($result01);  $i++){
+                    while ($row = mysqli_fetch_assoc($result01)){
 
                         echo "<a href='#' name='$i'>".$row["username"]."</a><br>";
 
@@ -141,6 +160,16 @@ if(!isset($_SESSION['u_username'])){
                             <form action="Sprint_Backlog.php">
                                 <button type="submit">Sprint Backlog</button>
                             </form>
+                            <?php
+                            if (mysqli_num_rows($result)==$_SESSION['Sprint_num']){
+?>
+                                <form action="includes/newSprint.php" method="POST">
+                                <button type="submit" style="background-color: #6FDF81" name="submit01">Next Sprint</button>
+                            </form>
+                            <?php
+                            }
+                            ?>
+
             <br><br><br><br><br>
                         </div>
         </main>
