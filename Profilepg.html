@@ -1,0 +1,232 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['u_username'])){
+    header("Location: http://csdm-webdev.rgu.ac.uk/1811216/1811216_2.github.io/index.php?login=nouser");
+}
+?>
+    <!DOCTYPE html>
+        <html lang= "en">
+             <head>
+				<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>My Profile</title>
+                 <!--Add CSS links-->
+                 <link rel="stylesheet" href="assets/CSS/unsemantic-grid-responsive-tablet.css"/>
+                 <link rel="stylesheet" href="assets/CSS/style.css"/>
+				 <!--Add JQuery Tabs-->
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+				<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+				<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+				<link href = "assets/CSS/fontello.css" rel = "stylesheet" type = "text/css" />
+                <script type="text/javascript" src="assets/JavaScript/clock.js"></script>
+				
+				 <!--Override style CSS-->
+                 <style>
+                     body {
+                         background-image: url("assets/images/alex-jodoin-246078.jpg");
+                         background-repeat: no-repeat;
+                         background-size: 100%;
+
+                    }
+					 
+					 .tabs-container {
+						width: 617px;
+						margin: 100px auto;
+					}
+					 .ui-widget-header {
+						background: black;
+						border: none;
+					}
+					 #tabs {
+						border: none;
+						background: black;
+						border: 1px solid white;
+					}
+					 .ui-tabs .ui-tabs-panel {
+						border-radius: 2px;
+						padding: 5% 10%;
+						border: 1px solid white;
+
+					}
+					.ui-state-default, .ui-widget-content .ui-state-default,
+					.ui-widget-header .ui-state-default, .ui-button,
+					html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+						background: grey;
+						border: 1px solid white;
+			
+					}
+					.ui-state-active, .ui-widget-content .ui-state-active,
+					.ui-widget-header .ui-state-active, a.ui-button:active, 
+					.ui-button:active, .ui-button.ui-state-active:hover {
+						background: black;
+						border: 1px solid black;
+						
+					}
+					.ui-state-default a, .ui-state-default a:link,
+					.ui-state-default a:visited, a.ui-button,
+					a:link.ui-button, a:visited.ui-button, .ui-button {
+						color: white;
+						border: 1px solid white;
+					}
+                 </style>
+				 
+				 
+             </head>
+             <body onload = "countdown();">
+                    <header>
+                        <!--Logged in set header-->
+                        <p style="float: left; margin-top: 10px ; font-weight: bold;font-size: 34px; color: white;border: 1px solid white; border-radius: 10px; margin-left: 5px; width: 102px; padding: 3px 15px 3px 15px">DAWN</p>
+                        <?php
+                        session_start();
+                        $user01 = "";
+                        $user01 = $_SESSION['u_username'];
+                        echo "<p style='margin-top: 10px; color: white; text-align: right; margin-right: 10px'> Welcome $user01</p>";
+                        ?>
+                        <!--Log out button-->
+                        <form action="includes/logout.inc.php" method="POST" >
+                            <input type="submit" name="logout" value="Log-Out" style="float: right; color: white; margin-right: 15px; background-color: black; border: 1px solid white; font-size: 18px; margin-top: -3px; cursor: pointer; font-weight: bold; border-radius: 5px" >
+                        </form>
+                    </header>
+                    <main>
+                        <!--Navigation Links-->
+                        <section>
+                            <nav id="top">
+                                <br>
+                                <div id="leftnavlink" style="margin-left: 2%;color: white; background-color: black; border: 1px solid white; font-size: 22px; cursor: pointer; font-weight: bold; border-radius: 5px; margin-right: 85%; text-align: center; margin-top: -15px; padding: 5px;">
+                                    <a class="primary_navlink" href="index.php">Home</a> |
+                                    <a class="primary_navlink" href="#">About</a>
+                                </div>
+                            </nav>
+                        </section>
+
+                        <br>
+
+                        <center>
+                            <!--Webpage Header with User's Names-->
+                            <div id="welcome" style=" height: 150px;">
+                                <br>
+                                <h2>Welcome to your Profile Page </h2>
+								
+                                <img src="assets/images/user-icon.png" alt="Default Pic" style="width: 100px; height: 100px;">
+                                <?php
+                                session_start();
+                                $user01 = "";
+                                $user01 = $_SESSION['u_first']." ".$_SESSION['u_last'];
+                                
+                                ?>
+								
+								<div id = "user"> Welcome <?php echo "Username $user01" ?>
+								
+								
+								<div id = "clock"></div>
+								
+                            </div>
+
+                            <br>
+
+                        
+                            <!--J-script for closing shadow upon clicking -->
+                            <script>
+                                // Get the modal
+                                var modal = document.getElementById('id01');
+
+                                // When the user clicks anywhere outside of the modal, close it
+                                window.onclick = function(event) {
+                                    if (event.target == modal) {
+                                        modal.style.display = "none";
+                                    }
+                                }
+                            </script>
+
+                            <br><br><br>
+							
+							
+
+				<div class= "tabs-container">			
+					<div id= "tabs">
+						<ul>
+							<li><a href="#tabs-1">Would you like to build a new project?</a></li>
+							<li><a href="#tabs-2">Your current project</a></li>
+						</ul>
+						<div id="tabs-1">
+							<!--Popup box to create new Project-->
+							<strong>Click button to create a new project</strong><br><br>
+                            <!-- Button to open the modal login form -->
+                            <button onclick="document.getElementById('id01').style.display='block" style="color: white; background-color: black; border: 1px solid white; font-size: 18px; cursor: pointer; font-weight: bold; border-radius: 5px">Build New Project</button>
+                            <!-- The Modal -->
+                            <div id="id01" class="modal">
+                                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                <!-- Modal Content -->
+                                <form class="modal-content animate" action="includes/createProj.inc.php" method="POST">
+                                    <center>
+                                        <div class="container">
+                                            <label for="uname"><b>Input New Project Name</b></label><br><br>
+                                            <input type="text" name="NewProj" required><br>
+                                            <button type="submit" name="submit">Submit</button>
+                                        </div>
+                                        <div class="container" style="background-color:#f1f1f1">
+                                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                        </div>
+                                    </center>
+                                </form>
+                            </div>	
+                            
+						</div>
+							
+							<div id="tabs-2">
+								<h3>Load or delete your project</h3><br>
+                                <center>
+
+                                    <form class="load_Proj" action="includes/loadProj.php" method="POST">
+                                        <select name="choice" multiple>
+                                        <?php
+
+                                        include_once 'includes/dbh.inc.php';
+
+                                        $uid = mysqli_real_escape_string($conn,$_SESSION['u_id']);
+
+                                        $sql = "SELECT project_table.Project_Name FROM user_project_table , project_table WHERE user_project_table.project_id = project_table.Project_ID AND user_project_table.user_id = '$uid'";
+                                        $result = mysqli_query($conn,$sql);
+
+                                        for ($i = 0 ; $i < mysqli_num_rows($result);  $i++){
+                                            while ($row = mysqli_fetch_assoc($result)){
+                                                        //$abc = $row["Project_ID"];
+                                                echo "<option>".$row["Project_Name"]."</option><br>";
+
+                                            }
+                                        }
+                                        ?>
+                                        </select>
+                                        <button type="submit" name="safe" style="color: white; background-color: black; border: 1px solid white; font-size: 18px; cursor: pointer; font-weight: bold; border-radius: 5px">Load</button>
+                                        <button type="submit" name="safe1" style="color: white; background-color: black; border: 1px solid white; font-size: 18px; cursor: pointer; font-weight: bold; border-radius: 5px">Delete</button>
+                                    </form>
+
+                                </center>
+							</div>
+							
+							
+					</div>
+				</div>			 
+							<!-- JavaScript function for tabs-->
+							<script>
+								$(function(){
+								$("#tabs").tabs();
+								});
+							</script>	
+						
+                        </center>
+						
+
+                        <br/><br/><br/>
+
+                                            </main>
+                                             <div id = "footer_PP">
+			
+												<div class = "foot"; title = "FAQ"><a href = "#"> <i class="icon-help-circled"></i> </a></div>
+												<div class = "foot"; title = "Contact"><a href = "#"> <i class="icon-mail-alt"></i> </a></div>
+												<div class = "foot"; title = "About"><a href = "#"><i class="icon-users"></i> </a></div>
+				
+											</div>
+                                     </body>
+                                </html>
