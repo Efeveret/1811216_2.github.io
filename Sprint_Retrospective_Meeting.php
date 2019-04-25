@@ -49,14 +49,12 @@ if(!isset($_SESSION['u_username'])){
     </div>
 
     <form action="includes/loadSRM.php" method="POST">
-        <p>Meeting Date [dd/mm/yyyy]:</p>
-        <input type="text" name="first" style="width:236px;" required>
         <p>Start Time:</p>
-        <input type="text" name="first" style="width:236px;" required>
+        <input type="text" name="st" style="width:236px;" required>
         <p>End Time:</p>
-        <input type="text" name="first" style="width:236px;" required>
+        <input type="text" name="et" style="width:236px;" required>
         <p>Reflection:</p>
-        <textarea rows="4" cols="50"></textarea>
+        <textarea rows="4" cols="50" name="comment"></textarea>
         <br>
         <br>
         <button type="submit" name="submit">Save</button>

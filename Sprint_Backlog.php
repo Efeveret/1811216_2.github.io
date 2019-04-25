@@ -4,6 +4,7 @@ session_start();
 if(!isset($_SESSION['u_username'])){
     header("Location: http://csdm-webdev.rgu.ac.uk/1811216/1811216_2.github.io/index.php?login=nouser");
 }
+include 'includes/dbh.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,12 +24,12 @@ if(!isset($_SESSION['u_username'])){
     </script>
     <style>
         body {
-            background-image: url("assets/images/alex-jodoin-246078-unsplash.jpg");
-            background-repeat: no-repeat;
-            background-size: 100% 230%;
+background-color: white;
+            margin-bottom: 100px;
 
         }
         main{
+            border: white;
             background-color: white;
 
 
@@ -56,35 +57,102 @@ if(!isset($_SESSION['u_username'])){
         <h2>Sprint Backlog</h2>
     </div>
 
-    <form>
+    <form action="includes/addTasks.php" method="POST">
         <fieldset>
             <h3>Sprint Backlog</h3><br><br>
         <table style="width:100%">
             <tr>
                 <th>Sprint Items</th>
                 <th>Tasks</th>
-                <th>Not Started</th>
-                <th>Work in Progress</th>
-                <th>Completed</th>
-                <th>Acceptance Criteria</th>
+                <th>Status</th>
+                <th>Comment</th>
             </tr>
 
-            <tr>
+            <?php
 
+            include_once 'includes/dbh.inc.php';
+
+            $sprid = mysqli_real_escape_string($conn,$_SESSION['Sprint_id']);
+
+            $sql = "SELECT * FROM `sprint_bl`, `product_backlog`, `sprintbl_tasks` WHERE product_backlog.backlogid = sprint_bl.pbl_id AND sprint_bl.sprintBL_id=sprintbl_tasks.sib_id AND product_backlog.sprint_id = '$sprid'";
+            $result = mysqli_query($conn,$sql);
+
+            for ($i = 0 ; $i < mysqli_num_rows($result);  $i++){
+                while ($row = mysqli_fetch_assoc($result)){
+                    //$abc = $row["Project_ID"];
+
+                    echo "<tr>";
+                    echo "<td>".$row["ProItem"]."</td>";
+                    echo "<td>".$row["task_name"]."</td>";
+                    echo "<td>".$row["statues"]."</td>";
+                    echo "<td>".$row["comment"]."</td>";
+                    echo "</tr>";
+                }
+            }
+            ?>
+
+            <tr>
+                <td>
+                    <select name="itemsselect">
+                        <?php
+
+
+                        $sql = "SELECT * FROM `sprint_bl`, `product_backlog` WHERE product_backlog.backlogid = sprint_bl.pbl_id AND product_backlog.sprint_id = '$sprid'";
+                        $result = mysqli_query($conn,$sql);
+
+                        for ($i = 0 ; $i < mysqli_num_rows($result);  $i++){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                //$abc = $row["Project_ID"];
+                                echo "<option>".$row["ProItem"]."</option>";
+                            }
+                        }
+
+                        ?>
+                    </select>
+                </td>
                 <td><input type="text" name="SED" required></td>
-                <td><input type="text" name="SED" required></td>
-                <td><input type="radio" name="radio-1" id="radio-1"></td>
-                <td><input type="radio" name="radio-1" id="radio-2"></td>
-                <td><input type="radio" name="radio-1" id="radio-3"></td>
-                <td><input type="text" name="SED" required></td>
+                <td>
+                    <select name="statSelected">
+                        <option style="width: 60px">Not Started</option>
+                        <option style="width: 60px">Work in Progress</option>
+                        <option style="width: 60px">Completed</option>
+                    </select>
+                </td>
+                <td><input type="text" name="SED1" required></td>
             </tr>
         </table>
         </fieldset>
-        </form>
-        <button type="submit" name="submit">Save</button>
-        <br>
-        <br>
+        <button type="submit" name="submit">Add Task</button>
+        </form><br>
+    <form action="includes/addTasks.php" method="POST">
+        <p><strong>Update item status:</strong></p>
+        <p>Select Item</p>
+        <select name="itemsselect" required>
+            <?php
+
+
+            $sql = "SELECT * FROM `sprint_bl`, `product_backlog` WHERE product_backlog.backlogid = sprint_bl.pbl_id AND product_backlog.sprint_id = '$sprid'";
+            $result = mysqli_query($conn,$sql);
+
+            for ($i = 0 ; $i < mysqli_num_rows($result);  $i++){
+                while ($row = mysqli_fetch_assoc($result)){
+                    //$abc = $row["Project_ID"];
+                    echo "<option>".$row["ProItem"]."</option>";
+                }
+            }
+
+            ?>
+        </select>
+        <p>Select Status</p>
+        <select name="statSelected" required>
+            <option style="width: 60px">Not Started</option>
+            <option style="width: 60px">Work in Progress</option>
+            <option style="width: 60px">Completed</option>
+        </select><br>
+        <button type="submit" name="submit01">Update item status</button>
     </form>
+        <br>
+        <br>
 
 
 </main>

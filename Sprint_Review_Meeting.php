@@ -49,21 +49,13 @@ if(!isset($_SESSION['u_username'])){
         <h2>Sprint Review Meeting</h2>
     </div>
 
-    <form>
-        <p>Meeting Date [dd/mm/yyyy]:</p>
-        <input type="text" name="first" style="width:236px;" required>
+    <form action = "includes/insertreview.php" method = "post">
         <p>Start Time:</p>
-        <input type="text" name="first" style="width:236px;" required>
+        <input type="text" name="start" style="width:236px;" required>
         <p>End Time:</p>
-        <input type="text" name="first" style="width:236px;" required>
-        <p>Sprint Tasks Completed:</p>
-        <input type="text" name="first" style="width:236px;" required>
-        <p>Status:</p>
-        <input type="text" name="last" style="width:236px; " required>
-        <p>Acceptance Criteria:</p>
-        <input type="text" name="uid" style="width:236px; " required>
+        <input type="text" name="end" style="width:236px;" required>
         <p>Product Owner Comments/Feedback:</p>
-        <input type="text" name="pwd" style="width:236px; " required>
+        <textarea name="Text1" cols="40" rows="5"></textarea>
         <br>
         <br>
         <button type="submit" name="submit">Save</button>

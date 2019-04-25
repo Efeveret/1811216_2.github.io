@@ -141,6 +141,7 @@ h1{
 
 main{
     border-radius: 10px;
+    border-style: double;
     margin-top: 71px;
     max-width: 80%;
     margin-left: auto;
@@ -206,17 +207,22 @@ h2{
 }
 
 .HiddenLIMF{
-    width: 320px;
+   /* width: 320px;
     background-color: tomato;
     margin-left: auto;
     margin-right: auto;
     height: 40px;
+    */
 }
 
 .HiddenLIMF p{
     color: white;
     text-align: center;
-
+    width: 320px;
+    background-color: tomato;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
 
 
 

@@ -14,6 +14,7 @@ if (isset($_POST['submit01'])) {
     $sql = "INSERT INTO `product_backlog`(`Priority`, `ProItem`, `AccCrit`, `EffPoint`, `comment`, `sprint_id`) VALUES ('$Pri', '$TaskI', '$AC', '$EF', '$Comment', '$sprid')";
     $result = mysqli_query($conn,$sql);
 
+
          header("Location: ../Sprint_Planning_Meeting.php?loadSuccess");
                     exit();
 
@@ -63,8 +64,9 @@ if ($check>0){
     $srmd = date('Y-m-d', strtotime(str_replace('-', '/', $srmd)));
     $sretromd = mysqli_real_escape_string($conn, $_POST['sretromd']);
     $sretromd = date('Y-m-d', strtotime(str_replace('-', '/', $sretromd)));
+    $over = mysqli_real_escape_string($conn, $_POST['desc']);
 
-    $sql03 = "INSERT INTO `sprint_plan_table`(`sprint_id`, `start_date`, `end_date`) VALUES ('$sid', '$ssd', '$sed')";
+    $sql03 = "INSERT INTO `sprint_plan_table`(`sprint_id`, `comment`, `start_date`, `end_date`) VALUES ('$sid','$over','$ssd','$sed')";
     $result = mysqli_query($conn,$sql03);
 
     $sql04 = "INSERT INTO `sprint_review_table`( `sprint_id`, `date`) VALUES ('$sid', '$srmd')";
@@ -79,5 +81,8 @@ if ($check>0){
 
 
 
+}else{
+    header("Location: ../index.php?login=error1");
+    exit();
 }
 

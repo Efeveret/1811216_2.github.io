@@ -30,12 +30,12 @@ session_start();
                 <!--Input for Sign-in-->
                 <form class="signin-form" action="includes/signin.inc.php" method="POST">
                     <div id="form_inside">
-                        <a href="#">Forgot User ID</a>
+
                         <br>
                         <input type="text" name="userid" placeholder="User ID" required>
                         <br>
                         <br>
-                        <a href="#" >Forgot Password</a>
+
                         <br>
                         <input type="password" name="pwd" placeholder="Password" required>
                         <br>

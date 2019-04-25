@@ -52,4 +52,5 @@ if (isset($_POST['submit'])) {
 
 }else{
     header("Location: ../index.php?login=error1");
-    exit();}
+    exit();
+}

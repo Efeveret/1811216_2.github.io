@@ -60,12 +60,16 @@ if(!isset($_SESSION['u_username'])){
                 </script>
                 <style>
                     body {
+                       background-color: white;
+
+                        /*
                         background-image: url("assets/images/alex-jodoin-246078-unsplash.jpg");
                         background-repeat: no-repeat;
-                        background-size: 100% 180%;
+                        background-size: 100% 180%;*/
                     }
                     main{
                         background-color: white;
+                        border: white;
                     }
                 </style>
             </head>
@@ -116,7 +120,8 @@ if(!isset($_SESSION['u_username'])){
                         <input type="text" name="sretromd" id="datepicker03">
                         <br>
                         <br>
-
+                        <p>Project Overview:</p>
+                        <textarea rows="4" cols="70" name="desc"></textarea><br><br>
                         <!--Product Backlog Table-->
                         <div>
                             <h3>Product Backlog</h3><br>
@@ -124,7 +129,7 @@ if(!isset($_SESSION['u_username'])){
                                 <table style="width:100%">
                                     <tr>
                                         <th>Priority</th>
-                                        <th>Task Name</th>
+                                        <th>Backlog Item</th>
                                         <th>Acceptance Criteria</th>
                                         <th>Effort Points</th>
                                         <th>Comments</th>
@@ -156,7 +161,10 @@ if(!isset($_SESSION['u_username'])){
                                         <td><input type="text" name="Pri" ></td>
                                         <td><input type="text" name="Task" ></td>
                                         <td><input type="text" name="AC" ></td>
-                                        <td><input type="text" name="EF" ></td>
+                                        <td><select name="EF">
+                                                <option>HIGH</option>
+                                                <option>LOW</option>
+                                            </select></td>
                                         <td><input type="text" name="Comment" ></td>
                                     </tr>
                                 </table>
@@ -182,10 +190,7 @@ if(!isset($_SESSION['u_username'])){
                                     for ($i = 0 ; $i < mysqli_num_rows($result);  $i++){
                                         while ($row = mysqli_fetch_assoc($result)){
                                             //$abc = $row["Project_ID"];
-
-
                                             echo "<option>".$row["ProItem"]."</option><br>";
-
                                         }
                                     }
                                     ?>

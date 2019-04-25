@@ -18,6 +18,7 @@ if(!isset($_SESSION['u_username'])){
             background-image: url("assets/images/alex-jodoin-246078-unsplash.jpg");
             background-repeat: no-repeat;
             background-size: 100% 180%;
+            margin-bottom: 100px;
 
         }
         main{
@@ -48,28 +49,22 @@ if(!isset($_SESSION['u_username'])){
         <h2>Daily Meeting</h2>
     </div>
 
-    <form>
+    <form action="includes/loadDM.php" method="POST">
         <p>Daily Meeting Date [dd/mm/yyyy]:</p>
-        <input type="text" name="first" style="width:236px;" required>
+        <input type="text" name="date" style="width:236px;" required>
         <p>Start Time of Meeting[HH:MM]:</p>
-        <input type="text" name="last" style="width:236px; " required>
+        <input type="text" name="start" style="width:236px; " required>
         <p>End Time of Meeting[HH:MM]:</p>
-        <input type="text" name="last" style="width:236px; " required><br><br>
-        <p>Select User:</p>
-	<select>
+        <input type="text" name="end" style="width:236px; " required><br><br>
 
-	</select>
-		
-
-        <input type="text" name="uid" style="width:236px; " required>
         <p>What was done yesterday:</p>
-        <input type="text" name="pwd" style="width:236px; " required>
+        <textarea rows="4" cols="70" name="yes" required></textarea><br><br>
         <p>What will be done today:</p>
-        <input type="text" name="email" style="width:236px;" required>
+        <textarea rows="4" cols="70" name="tod" required></textarea><br><br>
         <p>Problems encountered:</p>
-        <input type="text" name="email" style="width:236px;" required>
+        <textarea rows="4" cols="70" name="pe" required></textarea><br><br>
         <p>Additional comment:</p>
-        <input type="text" name="email" style="width:236px;" required>
+        <textarea rows="4" cols="70" name="ac" required></textarea><br><br>
         <br>
         <br>
         <button type="submit" name="submit">save</button>
